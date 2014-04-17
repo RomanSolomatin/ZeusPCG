@@ -2,11 +2,11 @@
 
 #pragma once
 
-#include "PCGWorld.generated.h"
+#include "Generator.generated.h"
 
 
 UCLASS()
-class UPCGWorld : public UObject
+class UGenerator : public UObject
 {
 	GENERATED_UCLASS_BODY()
 

@@ -8,7 +8,7 @@
 /**
  * The public interface to this module
  */
-class IPCGPlugin : public IModuleInterface
+class IZeusPCG : public IModuleInterface
 {
 
 public:
@@ -19,9 +19,9 @@ public:
 	 *
 	 * @return Returns singleton instance, loading the module on demand if needed
 	 */
-	static inline IPCGPlugin& Get()
+	static inline IZeusPCG& Get()
 	{
-		return FModuleManager::LoadModuleChecked< IPCGPlugin >("PCGPlugin");
+		return FModuleManager::LoadModuleChecked< IZeusPCG >("ZeusPCG");
 	}
 
 	/**
@@ -31,7 +31,7 @@ public:
 	 */
 	static inline bool IsAvailable()
 	{
-		return FModuleManager::Get().IsModuleLoaded( "PCGPlugin" );
+		return FModuleManager::Get().IsModuleLoaded( "ZeusPCG" );
 	}
 };
 

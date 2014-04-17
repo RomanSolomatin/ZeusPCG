@@ -2,9 +2,9 @@
 
 namespace UnrealBuildTool.Rules
 {
-	public class PCGPlugin : ModuleRules
+	public class ZeusPCG : ModuleRules
 	{
-        public PCGPlugin(TargetInfo Target)
+        public ZeusPCG(TargetInfo Target)
 		{
 			PublicIncludePaths.AddRange(
 				new string[] {
@@ -14,7 +14,7 @@ namespace UnrealBuildTool.Rules
 
 			PrivateIncludePaths.AddRange(
 				new string[] {
-					"Developer/PCGPlugin/Private",
+					"Developer/ZeusPCG/Private",
 					// ... add other private include paths required here ...
 				}
 				);
