@@ -6,7 +6,7 @@ namespace UnrealBuildTool.Rules
 	{
         public ZeusPCG(TargetInfo Target)
 		{
-			PublicIncludePaths.AddRange(
+            PublicIncludePaths.AddRange(
 				new string[] {
 					// ... add public include paths required here ...
 				}
@@ -24,7 +24,11 @@ namespace UnrealBuildTool.Rules
 				{
 					"Core",
 					"CoreUObject",
-					// ... add other public dependencies that you statically link with here ...
+                    "Engine",
+                    "RenderCore",
+                    "ShaderCore",
+                    "RHI",
+                    // ... add other public dependencies that you statically link with here ...
 				}
 				);
 

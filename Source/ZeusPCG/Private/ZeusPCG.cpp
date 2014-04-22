@@ -2,7 +2,7 @@
 
 #include "ZeusPCGPrivatePCH.h"
 
-#include "Generator.h"
+#include "GeneratorComponent.h"
 #include "ZeusPCG.generated.inl"
 
 

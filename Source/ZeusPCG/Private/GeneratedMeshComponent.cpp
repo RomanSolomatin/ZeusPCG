@@ -1,7 +1,7 @@
 // Copyright 1998-2014 Epic Games, Inc. All Rights Reserved.
 
 #include "ZeusPCGPrivatePCH.h"
-#include "GeneratedMesh.h"
+#include "GeneratedMeshComponent.h"
 
 /** Vertex Buffer */
 class FGeneratedMeshVertexBuffer : public FVertexBuffer
@@ -209,14 +209,14 @@ private:
 
 //////////////////////////////////////////////////////////////////////////
 
-UGeneratedMesh::UGeneratedMesh(const FPostConstructInitializeProperties& PCIP)
+UGeneratedMeshComponent::UGeneratedMeshComponent(const FPostConstructInitializeProperties& PCIP)
 : Super(PCIP)
 {
 	PrimaryComponentTick.bCanEverTick = false;
 
 }
 
-bool UGeneratedMesh::SetGeneratedMeshTriangles(const TArray<FGeneratedMeshTriangle>& Triangles)
+bool UGeneratedMeshComponent::SetGeneratedMeshTriangles(const TArray<FGeneratedMeshTriangle>& Triangles)
 {
 	GeneratedMeshTris = Triangles;
 
@@ -233,7 +233,7 @@ bool UGeneratedMesh::SetGeneratedMeshTriangles(const TArray<FGeneratedMeshTriang
 }
 
 
-FPrimitiveSceneProxy* UGeneratedMesh::CreateSceneProxy()
+FPrimitiveSceneProxy* UGeneratedMeshComponent::CreateSceneProxy()
 {
 	FPrimitiveSceneProxy* Proxy = NULL;
 	if (GeneratedMeshTris.Num() > 0)
@@ -243,13 +243,13 @@ FPrimitiveSceneProxy* UGeneratedMesh::CreateSceneProxy()
 	return Proxy;
 }
 
-int32 UGeneratedMesh::GetNumMaterials() const
+int32 UGeneratedMeshComponent::GetNumMaterials() const
 {
 	return 1;
 }
 
 
-FBoxSphereBounds UGeneratedMesh::CalcBounds(const FTransform & LocalToWorld) const
+FBoxSphereBounds UGeneratedMeshComponent::CalcBounds(const FTransform & LocalToWorld) const
 {
 	FBoxSphereBounds NewBounds;
 	NewBounds.Origin = FVector::ZeroVector;
@@ -259,7 +259,7 @@ FBoxSphereBounds UGeneratedMesh::CalcBounds(const FTransform & LocalToWorld) con
 }
 
 
-bool UGeneratedMesh::GetPhysicsTriMeshData(struct FTriMeshCollisionData* CollisionData, bool InUseAllTriData)
+bool UGeneratedMeshComponent::GetPhysicsTriMeshData(struct FTriMeshCollisionData* CollisionData, bool InUseAllTriData)
 {
 	FTriIndices Triangle;
 
@@ -279,12 +279,12 @@ bool UGeneratedMesh::GetPhysicsTriMeshData(struct FTriMeshCollisionData* Collisi
 	return true;
 }
 
-bool UGeneratedMesh::ContainsPhysicsTriMeshData(bool InUseAllTriData) const
+bool UGeneratedMeshComponent::ContainsPhysicsTriMeshData(bool InUseAllTriData) const
 {
 	return (GeneratedMeshTris.Num() > 0);
 }
 
-void UGeneratedMesh::UpdateBodySetup() {
+void UGeneratedMeshComponent::UpdateBodySetup() {
 	if (ModelBodySetup == NULL)	{
 		ModelBodySetup = ConstructObject<UBodySetup>(UBodySetup::StaticClass(), this);
 		ModelBodySetup->CollisionTraceFlag = CTF_UseComplexAsSimple;
@@ -292,7 +292,7 @@ void UGeneratedMesh::UpdateBodySetup() {
 	}
 }
 
-void UGeneratedMesh::UpdateCollision() {
+void UGeneratedMeshComponent::UpdateCollision() {
 	if (bPhysicsStateCreated) {
 		DestroyPhysicsState();
 		UpdateBodySetup();
@@ -305,7 +305,7 @@ void UGeneratedMesh::UpdateCollision() {
 	}
 }
 
-UBodySetup* UGeneratedMesh::GetBodySetup() {
+UBodySetup* UGeneratedMeshComponent::GetBodySetup() {
 	UpdateBodySetup();
 	return ModelBodySetup;
 }

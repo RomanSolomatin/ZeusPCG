@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "UGeneratedMesh.generated.h"
+#include "GeneratedMeshComponent.generated.h"
 
 USTRUCT(BlueprintType)
 struct FGeneratedMeshTriangle
@@ -20,8 +20,8 @@ struct FGeneratedMeshTriangle
 };
 
 /** Component that allows you to specify custom triangle mesh geometry */
-UCLASS(editinlinenew, meta = (BlueprintSpawnableComponent), ClassGroup = Rendering)
-class UGeneratedMesh : public UMeshComponent, public IInterface_CollisionDataProvider
+UCLASS(EditInlineNew, ClassGroup = PCG)
+class UGeneratedMeshComponent : public UMeshComponent, public IInterface_CollisionDataProvider
 {
 	GENERATED_UCLASS_BODY()
 
@@ -64,4 +64,3 @@ private:
 
 	friend class FGeneratedMeshSceneProxy;
 };
-
