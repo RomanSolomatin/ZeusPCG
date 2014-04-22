@@ -14,7 +14,9 @@ Concepts
 --------
 
 TODO: Generator - Contains all the main events/function/data for generating a single thing.
-TODO: Scope - A subset of the thing being generated, which can be acted upon individually. All generated content has at least one master scope. Scopes can be assigned traits (arbitrary named data), which can include physical extents. Scopes are heiarchical and form a tree.
-TODO: Nodes - Nodes are containded in scopes, often has a spatial position, and form a graph, possibly connected outside of their own scope. Nodes can be assigned traits (arbitrary named data), which can include a physical position.
+
+TODO: Scope - A subset of the thing being generated, which can be acted upon individually. All generated content has at least one master scope. Scopes can be assigned traits (arbitrary named data), which can include physical extents and connections to other scopes. Scopes are heiarchical and form a tree. The physical extents of a scope can be turned into a mesh.
+
 TODO: Mutator - Takes a scope or node and immediately either alters its traits in some way or spawns in nodes/scopes from it.
+
 TODO: Agent - Agents are like mutators but are designed to act iteratively and in parallel.
