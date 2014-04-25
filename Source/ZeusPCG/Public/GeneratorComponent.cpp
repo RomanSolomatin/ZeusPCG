@@ -9,7 +9,7 @@ UGeneratorComponent::UGeneratorComponent(const FPostConstructInitializePropertie
 {
 }
 
-void UGeneratorComponent::AddScope(UScope* Scope)
+void UGeneratorComponent::AddScope(UGeneratorComponent* Generator, UScope* Scope)
 {
-	Scopes.Push(Scope);
+	Generator->Scopes.Push(Scope);
 }
